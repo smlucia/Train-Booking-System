@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import "../../styles/Schedule/ScheduleList.css";
 
 function ScheduleList() {
     const [schedules, setSchedules] = useState([]);
@@ -192,9 +193,9 @@ function ScheduleList() {
     };
 
     return (
-        <div>
+        <div className="schedule-list-container">
             <h1>Schedule List</h1>
-            <div>
+            <div className="schedule-search">
                 <label htmlFor="search">Search Schedule ID:</label>
                 <input
                     type="text"
@@ -203,7 +204,7 @@ function ScheduleList() {
                     onChange={handleSearch}
                 />
             </div>
-            <table>
+            <table className="schedule-table">
                 <thead>
                     <tr>
                         <th>Schedule ID</th>
@@ -229,7 +230,7 @@ function ScheduleList() {
                             <td>{formatDate(schedule.scheduleDate)}</td>
                             <td>
                                 {showStatusDropdowns[schedule.id] ? (
-                                    <div>
+                                    <div className="status-text">
                                         <select
                                             value={statusUpdates[schedule.id] || schedule.scheduleStatus}
                                             onChange={(e) => handleStatusChange(schedule.id, e.target.value)}

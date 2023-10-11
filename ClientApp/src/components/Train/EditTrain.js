@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import "../../styles/Train/EditTrain.css";
 
 function EditTrain() {
     const navigate = useNavigate();
@@ -111,9 +112,9 @@ function EditTrain() {
     };
 
     return (
-        <div>
+        <div className="edit-train-container">
             <h2>Edit Train</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="edit-train-form" onSubmit={handleSubmit}>
                 <div>
                     <label>Train Name:</label>
                     <input

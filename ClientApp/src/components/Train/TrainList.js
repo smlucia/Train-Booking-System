@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/Train/TrainList.css";
 
 function TrainList() {
     const [trains, setTrains] = useState([]);
@@ -61,13 +62,13 @@ function TrainList() {
     }
 
     return (
-        <div>
+        <div className="train-list-container">
             <h2>Train List</h2>
-            <div>
+            <div className="train-list-search">
                 <label htmlFor="search">Search Train ID:</label>
                 <input type="text" id="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             </div>
-            <table>
+            <table className="train-list-table">
                 <thead>
                     <tr>
                         <th>Train ID</th>

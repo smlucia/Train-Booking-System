@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import "../../styles/Schedule/EditSchedule.css";
 
 function EditSchedule() {
     const navigate = useNavigate();
@@ -125,10 +126,10 @@ function EditSchedule() {
     };
 
     return (
-        <div>
+        <div className="edit-schedule-container">
             <h1>Edit Schedule</h1>
             {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}>
+            <form className="edit-schedule-form" onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="trainId">Train ID:</label>
                     <select

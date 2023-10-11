@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../../styles/Train/AddTrain.css";
 
 function AddTrain() {
     const [trainData, setTrainData] = useState({
@@ -85,9 +86,9 @@ function AddTrain() {
 
 
     return (
-        <div>
+        <div className="add-train-container">
             <h2>Add New Train</h2>
-            <form onSubmit={handleSubmit} method='POST'>
+            <form className="add-train-form" onSubmit={handleSubmit} method='POST'>
                 <div>
                     <label>Train Name:</label>
                     <input

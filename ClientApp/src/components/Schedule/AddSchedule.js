@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/Schedule/AddSchedule.css";
 
 function AddSchedule() {
     const [trainData, setTrainData] = useState([]);
@@ -148,9 +149,9 @@ function AddSchedule() {
     const filteredTrainData = trainData.filter((train) => train.assignStatus === "Not assigned");
 
     return (
-        <div>
+        <div className="add-schedule-container">
             <h1>Add Schedule</h1>
-            <form onSubmit={handleSubmit} method="POST">
+            <form className="add-schedule-form" onSubmit={handleSubmit} method="POST">
                 <label htmlFor="trainId">Train:</label>
                 <select
                     id="trainId"

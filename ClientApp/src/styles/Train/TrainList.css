@@ -1,0 +1,59 @@
+/* styles.css */
+
+/* Container styles */
+.train-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Search bar styles */
+.train-list-search {
+    margin-bottom: 20px;
+}
+
+.train-list-search label {
+    font-weight: bold;
+}
+
+.train-list-search input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Table styles */
+.train-list-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.train-list-table th, .train-list-table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.train-list-table th {
+    background-color: #f5f5f5;
+    text-align: left;
+}
+
+.train-list-table th:nth-child(5), .train-list-table td:nth-child(5) {
+    text-align: center;
+}
+
+/* Button styles */
+.train-list-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.train-list-button:hover {
+    background-color: #0056b3;
+}

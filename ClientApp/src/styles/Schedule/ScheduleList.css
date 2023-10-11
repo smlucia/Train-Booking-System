@@ -1,0 +1,78 @@
+/* styles.css */
+
+/* Container styles */
+.schedule-list-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Search bar styles */
+.schedule-search {
+    margin-bottom: 20px;
+}
+
+.schedule-search label {
+    font-weight: bold;
+}
+
+.schedule-search input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Table styles */
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.schedule-table th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.schedule-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.schedule-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.schedule-table td select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.schedule-table td select:focus {
+    outline: none;
+}
+
+.schedule-table td div {
+    cursor: pointer;
+}
+
+.schedule-table td button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 5px;
+    color: #007bff;
+}
+
+.schedule-table td button:hover {
+    color: #0056b3;
+}

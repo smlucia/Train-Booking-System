@@ -1,0 +1,44 @@
+/* styles.css */
+
+/* Container styles */
+.edit-train-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+/* Form styles */
+.edit-train-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-train-form label {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.edit-train-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.edit-train-form button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.edit-train-form button:hover {
+    background-color: #0056b3;
+}
