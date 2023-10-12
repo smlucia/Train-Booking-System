@@ -126,104 +126,106 @@ function EditSchedule() {
     };
 
     return (
-        <div className="edit-schedule-container">
-            <h1>Edit Schedule</h1>
-            {error && <p>{error}</p>}
-            <form className="edit-schedule-form" onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="trainId">Train ID:</label>
-                    <select
-                        id="trainId"
-                        name="trainId"
-                        value={formData.trainId}
-                        onChange={handleInputChange}
-                        required
-                    >
-                        <option value="">Select a Train</option>
-                        {trainData && trainData.length > 0 ? (
-                            trainData.map((train) => (
-                                <option
-                                    key={train.trainId}
-                                    value={`${train.id.slice(-4)} - ${train.trainName}`}
-                                >
-                                    {train.id.slice(-4)} - {train.trainName}
-                                </option>
-                            ))
-                        ) : (
-                            <option value="">No trains available</option>
-                        )}
-                    </select>
-                </div>
-                <div>
-                    <label htmlFor="fromLocation">From Location:</label>
-                    <input
-                        type="text"
-                        id="fromLocation"
-                        name="fromLocation"
-                        value={formData.fromLocation}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="toLocation">To Location:</label>
-                    <input
-                        type="text"
-                        id="toLocation"
-                        name="toLocation"
-                        value={formData.toLocation}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="departureTime">Departure Time:</label>
-                    <input
-                        type="time"
-                        id="departureTime"
-                        name="departureTime"
-                        value={formData.departureTime}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="arrivalTime">Arrival Time:</label>
-                    <input
-                        type="time"
-                        id="arrivalTime"
-                        name="arrivalTime"
-                        value={formData.arrivalTime}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="scheduleDate">Schedule Date:</label>
-                    <input
-                        type="date"
-                        id="scheduleDate"
-                        name="scheduleDate"
-                        value={formData.scheduleDate}
-                        onChange={handleInputChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="scheduleStatus">Schedule Status:</label>
-                    <select
-                        id="scheduleStatus"
-                        name="scheduleStatus"
-                        value={formData.scheduleStatus}
-                        onChange={handleInputChange}
-                        required
-                    >
-                        <option value="Not completed">Not completed</option>
-                        <option value="Completed">Completed</option>
-                    </select>
-                </div>
-                <button type="submit">Update Schedule</button>
-            </form>
+        <div className='add-background'>
+            <h2>EDIT SCHEDULE DETAILS</h2>
+            <div className="edit-schedule-container">    
+                {error && <p>{error}</p>}
+                <form className="edit-schedule-form" onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="trainId">Train ID:</label>
+                        <select
+                            id="trainId"
+                            name="trainId"
+                            value={formData.trainId}
+                            onChange={handleInputChange}
+                            required
+                        >
+                            <option value="">Select a Train</option>
+                            {trainData && trainData.length > 0 ? (
+                                trainData.map((train) => (
+                                    <option
+                                        key={train.trainId}
+                                        value={`${train.id.slice(-4)} - ${train.trainName}`}
+                                    >
+                                        {train.id.slice(-4)} - {train.trainName}
+                                    </option>
+                                ))
+                            ) : (
+                                <option value="">No trains available</option>
+                            )}
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="arrivalTime">Arrival Time:</label>
+                        <input
+                            type="time"
+                            id="arrivalTime"
+                            name="arrivalTime"
+                            value={formData.arrivalTime}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="toLocation">To Location:</label>
+                        <input
+                            type="text"
+                            id="toLocation"
+                            name="toLocation"
+                            value={formData.toLocation}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="departureTime">Departure Time:</label>
+                        <input
+                            type="time"
+                            id="departureTime"
+                            name="departureTime"
+                            value={formData.departureTime}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="fromLocation">From Location:</label>
+                        <input
+                            type="text"
+                            id="fromLocation"
+                            name="fromLocation"
+                            value={formData.fromLocation}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="scheduleDate">Schedule Date:</label>
+                        <input
+                            type="date"
+                            id="scheduleDate"
+                            name="scheduleDate"
+                            value={formData.scheduleDate}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="scheduleStatus">Schedule Status:</label>
+                        <select
+                            id="scheduleStatus"
+                            name="scheduleStatus"
+                            value={formData.scheduleStatus}
+                            onChange={handleInputChange}
+                            required
+                        >
+                            <option value="Not completed">Not completed</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <button className= "submit-button" type="submit">UPDATE SCHEDULE</button>
+                </form>
+            </div>
         </div>
     );
 }

@@ -161,6 +161,10 @@ function ScheduleList() {
         navigate(`/editSchedule/${id}`);
     };
 
+    const handleAddNewSchedule = () => {
+        navigate("/addSchedule");
+    };
+
     const handleStatusClick = (id) => {
         // Show the status dropdown for the schedule with the given ID
         setShowStatusDropdowns({
@@ -193,72 +197,82 @@ function ScheduleList() {
     };
 
     return (
-        <div className="schedule-list-container">
-            <h1>Schedule List</h1>
-            <div className="schedule-search">
-                <label htmlFor="search">Search Schedule ID:</label>
-                <input
-                    type="text"
-                    id="search"
-                    value={searchTerm}
-                    onChange={handleSearch}
-                />
-            </div>
-            <table className="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Schedule ID</th>
-                        <th>Train ID</th>
-                        <th>From Location</th>
-                        <th>To Location</th>
-                        <th>Departure Time</th>
-                        <th>Arrival Time</th>
-                        <th>Schedule Date</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredSchedules.map((schedule) => (
-                        <tr key={schedule.id}>
-                            <td>{schedule.id.slice(-8)}</td>
-                            <td>{schedule.trainId}</td>
-                            <td>{schedule.fromLocation}</td>
-                            <td>{schedule.toLocation}</td>
-                            <td>{formatTime(schedule.departureTime)}</td>
-                            <td>{formatTime(schedule.arrivalTime)}</td>
-                            <td>{formatDate(schedule.scheduleDate)}</td>
-                            <td>
-                                {showStatusDropdowns[schedule.id] ? (
-                                    <div className="status-text">
-                                        <select
-                                            value={statusUpdates[schedule.id] || schedule.scheduleStatus}
-                                            onChange={(e) => handleStatusChange(schedule.id, e.target.value)}
-                                        >
-                                            <option value="Not completed">Not completed</option>
-                                            <option value="Completed">Completed</option>
-                                        </select>
-                                        <button
-                                            onClick={() => handleStatusChange(schedule.id, statusUpdates[schedule.id])}
-                                        >
-                                            &#10003; {/* Checkmark symbol */}
-                                        </button>
-                                        <button onClick={() => setShowStatusDropdowns({})}>&#10005; {/* Cross symbol */}</button>
-                                    </div>
-                                ) : (
-                                    <div onClick={() => handleStatusClick(schedule.id)}>
-                                        {schedule.scheduleStatus}
-                                    </div>
-                                )}
-                            </td>
-                            <td>
-                                <button onClick={() => handleEditClick(schedule.id)}>Edit</button>
-                                <button onClick={() => handleDeleteClick(schedule.id)}>Delete</button>
-                            </td>
+        <div className='add-background'>
+            <h2>SCHEDULE LIST</h2>
+            <div className="schedule-list-container">
+                <div className="schedule-search">
+                    <label htmlFor="search">Search Schedule ID:</label>
+                    <input
+                        placeholder="Enter the Schedule ID"
+                        type="text"
+                        id="search"
+                        value={searchTerm}
+                        onChange={handleSearch}
+                    />
+                </div>
+                <div>
+                    <button
+                        className="add-new-schedule-btn"
+                        onClick={() => handleAddNewSchedule()}>
+                        Add New Schedule
+                    </button>
+                </div>
+                <table className="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Schedule ID</th>
+                            <th>Train ID</th>
+                            <th>From Location</th>
+                            <th>To Location</th>
+                            <th>Departure Time</th>
+                            <th>Arrival Time</th>
+                            <th>Schedule Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {filteredSchedules.map((schedule) => (
+                            <tr key={schedule.id}>
+                                <td>{schedule.id.slice(-8)}</td>
+                                <td>{schedule.trainId}</td>
+                                <td>{schedule.fromLocation}</td>
+                                <td>{schedule.toLocation}</td>
+                                <td>{formatTime(schedule.departureTime)}</td>
+                                <td>{formatTime(schedule.arrivalTime)}</td>
+                                <td>{formatDate(schedule.scheduleDate)}</td>
+                                <td>
+                                    {showStatusDropdowns[schedule.id] ? (
+                                        <div className="status-text">
+                                            <select
+                                                value={statusUpdates[schedule.id] || schedule.scheduleStatus}
+                                                onChange={(e) => handleStatusChange(schedule.id, e.target.value)}
+                                            >
+                                                <option value="Not completed">Not completed</option>
+                                                <option value="Completed">Completed</option>
+                                            </select>
+                                            <button
+                                                onClick={() => handleStatusChange(schedule.id, statusUpdates[schedule.id])}
+                                            >
+                                                &#10003; {/* Checkmark symbol */}
+                                            </button>
+                                            <button onClick={() => setShowStatusDropdowns({})}>&#10005; {/* Cross symbol */}</button>
+                                        </div>
+                                    ) : (
+                                        <div onClick={() => handleStatusClick(schedule.id)}>
+                                            {schedule.scheduleStatus}
+                                        </div>
+                                    )}
+                                </td>
+                                <td>
+                                    <button className="edit-btn" onClick={() => handleEditClick(schedule.id)}>EDIT</button>
+                                    <button className="delete-btn" onClick={() => handleDeleteClick(schedule.id)}>DELETE</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

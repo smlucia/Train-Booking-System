@@ -19,6 +19,10 @@ import AddSchedule from "./components/Schedule/AddSchedule";
 import ScheduleList from "./components/Schedule/ScheduleList";
 import EditSchedule from "./components/Schedule/EditSchedule";
 
+//Import for Booking
+import AddBooking from "./components/Booking/AddBooking";
+import AddBookingSummary from "./components/Booking/AddBookingSummary";
+
 const AppRoutes = [
   {
     index: true,
@@ -55,7 +59,8 @@ const AppRoutes = [
   {
     path: '/scheduleList',
     element: <ScheduleList />
-  },{
+  },
+  {
     path: '/editSchedule/:id',
     element: <EditSchedule />
   },
@@ -66,6 +71,14 @@ const AppRoutes = [
   {
     path: '/addUser',
     element: <AddUser/>
+  },
+  {
+    path: '/addBooking',
+    element: <AddBooking/>
+  },
+  {
+    path: '/bookingSummary',
+    element: <AddBookingSummary/>
   }
 ];
 

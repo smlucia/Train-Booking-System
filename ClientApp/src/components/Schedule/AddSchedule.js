@@ -149,91 +149,93 @@ function AddSchedule() {
     const filteredTrainData = trainData.filter((train) => train.assignStatus === "Not assigned");
 
     return (
-        <div className="add-schedule-container">
-            <h1>Add Schedule</h1>
-            <form className="add-schedule-form" onSubmit={handleSubmit} method="POST">
-                <label htmlFor="trainId">Train:</label>
-                <select
-                    id="trainId"
-                    name="trainId"
-                    value={scheduleData.trainId}
-                    onChange={handleInputChange}
-                    required
-                >
-                    <option value="">Select a Train</option>
-                    {filteredTrainData && filteredTrainData.length > 0 ? (
-                        filteredTrainData.map((train) => (
-                            <option
-                                key={train.trainId}
-                                value={`${train.id.slice(-4)} - ${train.trainName}`}
-                            >
-                                {train.id.slice(-4)} - {train.trainName}
-                            </option>
-                        ))
-                    ) : (
-                        <option value="">No trains available</option>
-                    )}
+        <div className='add-background'>
+            <h2>ADD SCHEDULE</h2>
+            <div className="add-schedule-container">
+                <form className="add-schedule-form" onSubmit={handleSubmit} method="POST">
+                    <label htmlFor="trainId">Train:</label>
+                    <select
+                        id="trainId"
+                        name="trainId"
+                        value={scheduleData.trainId}
+                        onChange={handleInputChange}
+                        required
+                    >
+                        <option value="">Select a Train</option>
+                        {filteredTrainData && filteredTrainData.length > 0 ? (
+                            filteredTrainData.map((train) => (
+                                <option
+                                    key={train.trainId}
+                                    value={`${train.id.slice(-4)} - ${train.trainName}`}
+                                >
+                                    {train.id.slice(-4)} - {train.trainName}
+                                </option>
+                            ))
+                        ) : (
+                            <option value="">No trains available</option>
+                        )}
 
-                </select>
-                <br /><br />
+                    </select>
+                    <br /><br />
 
-                <label htmlFor="fromLocation">From Location:</label>
-                <input
-                    type="text"
-                    id="fromLocation"
-                    name="fromLocation"
-                    value={scheduleData.fromLocation}
-                    onChange={handleInputChange}
-                    required
-                />
-                <br /><br />
+                    <label htmlFor="fromLocation">From Location:</label>
+                    <input
+                        type="text"
+                        id="fromLocation"
+                        name="fromLocation"
+                        value={scheduleData.fromLocation}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <br /><br />
 
-                <label htmlFor="toLocation">To Location:</label>
-                <input
-                    type="text"
-                    id="toLocation"
-                    name="toLocation"
-                    value={scheduleData.toLocation}
-                    onChange={handleInputChange}
-                    required
-                />
-                <br /><br />
+                    <label htmlFor="toLocation">To Location:</label>
+                    <input
+                        type="text"
+                        id="toLocation"
+                        name="toLocation"
+                        value={scheduleData.toLocation}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <br /><br />
 
-                <label htmlFor="departureTime">Departure Time:</label>
-                <input
-                    type="time"
-                    id="departureTime"
-                    name="departureTime"
-                    value={scheduleData.departureTime}
-                    onChange={handleInputChange}
-                    required
-                />
-                <br /><br />
+                    <label htmlFor="departureTime">Departure Time:</label>
+                    <input
+                        type="time"
+                        id="departureTime"
+                        name="departureTime"
+                        value={scheduleData.departureTime}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <br /><br />
 
-                <label htmlFor="arrivalTime">Arrival Time:</label>
-                <input
-                    type="time"
-                    id="arrivalTime"
-                    name="arrivalTime"
-                    value={scheduleData.arrivalTime}
-                    onChange={handleInputChange}
-                    required
-                />
-                <br /><br />
+                    <label htmlFor="arrivalTime">Arrival Time:</label>
+                    <input
+                        type="time"
+                        id="arrivalTime"
+                        name="arrivalTime"
+                        value={scheduleData.arrivalTime}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <br /><br />
 
-                <label htmlFor="scheduleDate">Schedule Date:</label>
-                <input
-                    type="date"
-                    id="scheduleDate"
-                    name="scheduleDate"
-                    value={scheduleData.scheduleDate}
-                    onChange={handleInputChange}
-                    required
-                />
-                <br /><br />
+                    <label htmlFor="scheduleDate">Schedule Date:</label>
+                    <input
+                        type="date"
+                        id="scheduleDate"
+                        name="scheduleDate"
+                        value={scheduleData.scheduleDate}
+                        onChange={handleInputChange}
+                        required
+                    />
+                    <br /><br />
 
-                <input type="submit" value="Add Schedule" />
-            </form>
+                    <input type="submit" value="ADD SCHEDULE" />
+                </form>
+            </div>
         </div>
     );
 }

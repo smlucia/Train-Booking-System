@@ -86,53 +86,55 @@ function AddTrain() {
 
 
     return (
-        <div className="add-train-container">
-            <h2>Add New Train</h2>
-            <form className="add-train-form" onSubmit={handleSubmit} method='POST'>
-                <div>
-                    <label>Train Name:</label>
-                    <input
-                        type="text"
-                        name="trainName"
-                        value={trainData.trainName}
-                        onChange={(e) => setTrainData({ ...trainData, trainName: e.target.value })}
-                    />
-                </div>
-                {trainData.classes.map((cls, index) => (
-                    <div key={index}>
-                        <label>Class Name:</label>
+        <div className='add-background'>
+            <div className="add-train-container">
+                <h2>ADD NEW TRAIN</h2>
+                <form className="add-train-form" onSubmit={handleSubmit} method='POST'>
+                    <div>
+                        <label>Train Name:</label>
                         <input
                             type="text"
-                            name="className"
-                            value={cls.className}
-                            onChange={(e) => handleInputChange(e, index)}
+                            name="trainName"
+                            value={trainData.trainName}
+                            onChange={(e) => setTrainData({ ...trainData, trainName: e.target.value })}
                         />
-                        <label>Seats:</label>
-                        <input
-                            type="number"
-                            name="seats"
-                            value={cls.seats}
-                            onChange={(e) => handleInputChange(e, index)}
-                        />
-                        <label>Ticket Price:</label>
-                        <input
-                            type="number"
-                            name="ticketPrice"
-                            value={cls.ticketPrice}
-                            onChange={(e) => handleInputChange(e, index)}
-                        />
-                        {index > 0 && (
-                            <button type="button" onClick={() => handleRemoveClass(index)}>
-                                Remove Class
-                            </button>
-                        )}
                     </div>
-                ))}
-                <button type="button" onClick={handleAddClass}>
-                    Add Class
-                </button>
-                <button type="submit">Submit</button>
-            </form>
+                    {trainData.classes.map((cls, index) => (
+                        <div key={index}>
+                            <label>Class Name:</label>
+                            <input
+                                type="text"
+                                name="className"
+                                value={cls.className}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            <label>Seats:</label>
+                            <input
+                                type="number"
+                                name="seats"
+                                value={cls.seats}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            <label>Ticket Price:</label>
+                            <input
+                                type="number"
+                                name="ticketPrice"
+                                value={cls.ticketPrice}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            {index > 0 && (
+                                <button className= "remove-class-button" type="button" onClick={() => handleRemoveClass(index)}>
+                                    Remove Class
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                    <button className= "add-class-button" type="button" onClick={handleAddClass}>
+                        Add Class
+                    </button>
+                    <button className= "train-submit-button" type="submit">SUBMIT</button>
+                </form>
+            </div>
         </div>
     );
 }

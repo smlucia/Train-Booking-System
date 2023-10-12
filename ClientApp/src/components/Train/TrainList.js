@@ -27,6 +27,10 @@ function TrainList() {
         navigate(`/editTrain/${id}`);
     };
 
+    const handleAddNewTrain = () => {
+        navigate("/addTrain");
+    };
+
     useEffect(() => {
         fetchTrains();
     }, []);
@@ -62,56 +66,65 @@ function TrainList() {
     }
 
     return (
-        <div className="train-list-container">
-            <h2>Train List</h2>
-            <div className="train-list-search">
-                <label htmlFor="search">Search Train ID:</label>
-                <input type="text" id="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-            </div>
-            <table className="train-list-table">
-                <thead>
-                    <tr>
-                        <th>Train ID</th>
-                        <th>Train Name</th>
-                        <th>Class Details</th>
-                        <th>Assign Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {filteredTrains.map((train) => (
-                        <tr key={train.id}>
-                            <td>{train.id.slice(-8)}</td>
-                            <td>{train.trainName}</td>
-                            <td>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Class</th>
-                                            <th>No of Seats</th>
-                                            <th>Ticket Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {train.classes.map((classData) => (
-                                            <tr key={classData.className}>
-                                                <td>{classData.className}</td>
-                                                <td>{classData.seats}</td>
-                                                <td>{classData.ticketPrice}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </td>
-                            <td>{train.assignStatus}</td>
-                            <td>
-                                <button onClick={() => handleEditTrain(train.id)}>Edit</button>
-                                <button onClick={() => handleDeleteTrain(train.id)}>Delete</button>
-                            </td>
+        <div className='add-background'>
+            <h2>TRAIN LIST</h2>
+            <div className="train-list-container">
+                <div className="train-list-search">
+                    <label htmlFor="search">Search Train ID:</label>
+                    <input type="text" placeholder="Enter the Train ID" id="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                </div>
+                <div>
+                    <button
+                        className="add-new-train-btn"
+                        onClick={() => handleAddNewTrain()}>
+                        Add New Train
+                    </button>
+                </div>
+                <table className="train-list-table">
+                    <thead>
+                        <tr>
+                            <th>Train ID</th>
+                            <th>Train Name</th>
+                            <th>Class Details</th>
+                            <th>Assign Status</th>
+                            <th>Actions</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {filteredTrains.map((train) => (
+                            <tr key={train.id}>
+                                <td>{train.id.slice(-8)}</td>
+                                <td>{train.trainName}</td>
+                                <td>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>No of Seats</th>
+                                                <th>Ticket Price</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {train.classes.map((classData) => (
+                                                <tr key={classData.className}>
+                                                    <td>{classData.className}</td>
+                                                    <td>{classData.seats}</td>
+                                                    <td>{classData.ticketPrice}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>{train.assignStatus}</td>
+                                <td>
+                                    <button className="edit-btn" onClick={() => handleEditTrain(train.id)}>EDIT</button>
+                                    <button className="delete-btn" onClick={() => handleDeleteTrain(train.id)}>DELETE</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

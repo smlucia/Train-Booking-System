@@ -112,53 +112,55 @@ function EditTrain() {
     };
 
     return (
-        <div className="edit-train-container">
-            <h2>Edit Train</h2>
-            <form className="edit-train-form" onSubmit={handleSubmit}>
-                <div>
-                    <label>Train Name:</label>
-                    <input
-                        type="text"
-                        name="trainName"
-                        value={train.trainName}
-                        onChange={(e) => setTrain({ ...train, trainName: e.target.value })}
-                    />
-                </div>
-                {train.classes.map((cls, index) => (
-                    <div key={index}>
-                        <label>Class Name:</label>
+        <div className='add-background'>
+            <h2>EDIT TRAIN DETAILS</h2>
+            <div className="edit-train-container">
+                <form className="edit-train-form" onSubmit={handleSubmit}>
+                    <div>
+                        <label>Train Name:</label>
                         <input
                             type="text"
-                            name="className"
-                            value={cls.className}
-                            onChange={(e) => handleInputChange(e, index)}
+                            name="trainName"
+                            value={train.trainName}
+                            onChange={(e) => setTrain({ ...train, trainName: e.target.value })}
                         />
-                        <label>Seats:</label>
-                        <input
-                            type="number"
-                            name="seats"
-                            value={cls.seats}
-                            onChange={(e) => handleInputChange(e, index)}
-                        />
-                        <label>Ticket Price:</label>
-                        <input
-                            type="number"
-                            name="ticketPrice"
-                            value={cls.ticketPrice}
-                            onChange={(e) => handleInputChange(e, index)}
-                        />
-                        {index > 0 && (
-                            <button type="button" onClick={() => handleRemoveClass(index)}>
-                                Remove Class
-                            </button>
-                        )}
                     </div>
-                ))}
-                <button type="button" onClick={handleAddClass}>
-                    Add Class
-                </button>
-                <button type="submit">Save Changes</button>
-            </form>
+                    {train.classes.map((cls, index) => (
+                        <div key={index}>
+                            <label>Class Name:</label>
+                            <input
+                                type="text"
+                                name="className"
+                                value={cls.className}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            <label>Seats:</label>
+                            <input
+                                type="number"
+                                name="seats"
+                                value={cls.seats}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            <label>Ticket Price:</label>
+                            <input
+                                type="number"
+                                name="ticketPrice"
+                                value={cls.ticketPrice}
+                                onChange={(e) => handleInputChange(e, index)}
+                            />
+                            {index > 0 && (
+                                <button className= "remove-class-button"  type="button" onClick={() => handleRemoveClass(index)}>
+                                    Remove Class
+                                </button>
+                            )}
+                        </div>
+                    ))}
+                    <button  className= "add-class-button" type="button" onClick={handleAddClass}>
+                        Add Class
+                    </button>
+                    <button className= "submit-button" type="submit">SAVE CHANGES</button>
+                </form>
+            </div>
         </div>
     );
 }
