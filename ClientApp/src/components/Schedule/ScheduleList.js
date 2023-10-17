@@ -128,7 +128,7 @@ function ScheduleList() {
 
     const handleDeleteClick = async (id) => {
         // Display a window.confirm dialog for the delete confirmation
-        const confirmed = window.confirm("Are you sure you want to delete this schedule?");
+        const confirmed = window.confirm(`Are you sure you want to delete this schedule record with Schedule ID: ${id.slice(-8)}?`);
 
         if (confirmed) {
             // Send a DELETE request to remove the schedule from the API
@@ -160,6 +160,20 @@ function ScheduleList() {
         // Navigate to the edit page with the schedule's ID as a URL parameter
         navigate(`/editSchedule/${id}`);
     };
+
+    // Function to handle reserve a booking
+    const handleReserveNow = (id) => {
+        const schedule = schedules.find((schedule) => schedule.id === id);
+
+        if (schedule && schedule.scheduleStatus === "Completed") {
+            // Display an alert message if the schedule status is "Completed"
+            alert("SORRY! This schedule has been completed, try another schedule to make your reservation");
+        } else {
+            // Navigate to the booking page if the schedule status is not "Completed"
+            navigate(`/addBooking/${id}`);
+        }
+    };
+
 
     const handleAddNewSchedule = () => {
         navigate("/addSchedule");
@@ -265,8 +279,9 @@ function ScheduleList() {
                                     )}
                                 </td>
                                 <td>
-                                    <button className="edit-btn" onClick={() => handleEditClick(schedule.id)}>EDIT</button>
-                                    <button className="delete-btn" onClick={() => handleDeleteClick(schedule.id)}>DELETE</button>
+                                    <button className="schedule-reserve-now-btn" onClick={() => handleReserveNow(schedule.id)}>RESERVE NOW</button><br />
+                                    <button className="schedule-edit-btn" onClick={() => handleEditClick(schedule.id)}>EDIT</button>
+                                    <button className="schedule-delete-btn" onClick={() => handleDeleteClick(schedule.id)}>DELETE</button>
                                 </td>
                             </tr>
                         ))}

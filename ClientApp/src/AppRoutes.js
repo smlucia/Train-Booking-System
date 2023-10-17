@@ -22,6 +22,7 @@ import EditSchedule from "./components/Schedule/EditSchedule";
 //Import for Booking
 import AddBooking from "./components/Booking/AddBooking";
 import AddBookingSummary from "./components/Booking/AddBookingSummary";
+import BookingList from "./components/Booking/BookingList";
 
 const AppRoutes = [
   {
@@ -73,8 +74,12 @@ const AppRoutes = [
     element: <AddUser/>
   },
   {
-    path: '/addBooking',
+    path: '/addBooking/:id',
     element: <AddBooking/>
+  },
+  {
+    path: '/bookingList',
+    element: <BookingList/>
   },
   {
     path: '/bookingSummary',

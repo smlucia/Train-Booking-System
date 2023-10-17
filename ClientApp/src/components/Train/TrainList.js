@@ -36,11 +36,16 @@ function TrainList() {
     }, []);
 
     const handleDeleteTrain = async (id) => {
+    const trainToDelete = trains.find((train) => train.id === id);
+
+    if (trainToDelete) {
+        const assignStatus = trainToDelete.assignStatus;
+
         const confirmDelete = window.confirm(
-            "Are you sure you want to delete this train record"
+            `Are you sure you want to delete this train record with Train ID: ${id.slice(-8)}?`
         );
 
-        if (confirmDelete) {
+        if (confirmDelete && assignStatus !== "Assigned") {
             try {
                 const response = await fetch(`/api/trains/${id}`, {
                     method: "DELETE",
@@ -54,8 +59,13 @@ function TrainList() {
             } catch (error) {
                 console.error("Error:", error);
             }
+        } else if (assignStatus === "Assigned") {
+            alert("You cannot delete this train's details, Since it has been assigned for a schedule");
         }
-    };
+    }
+};
+
+    
 
     const filteredTrains = trains.filter((train) =>
         train.id.toLowerCase().includes(searchTerm.toLowerCase())
@@ -101,6 +111,7 @@ function TrainList() {
                                             <tr>
                                                 <th>Class</th>
                                                 <th>No of Seats</th>
+                                                <th>Available Seats</th>
                                                 <th>Ticket Price</th>
                                             </tr>
                                         </thead>
@@ -109,6 +120,7 @@ function TrainList() {
                                                 <tr key={classData.className}>
                                                     <td>{classData.className}</td>
                                                     <td>{classData.seats}</td>
+                                                    <td>{classData.availableSeats}</td>
                                                     <td>{classData.ticketPrice}</td>
                                                 </tr>
                                             ))}

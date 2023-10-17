@@ -13,10 +13,10 @@
 }
 
 /* Form styles */
-.edit-train-form {
+.add-booking-form {
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    max-width: 600px;
     /* max-height: 100%; */
     margin: 0 auto;
     padding: 20px;
@@ -25,27 +25,30 @@
     background-color: #f5f5f5;
     border-radius: 20px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-left: 430px;
+    margin-left: 380px;
     margin-top: 30px;
 }
 
-.edit-train-form label {
+.add-booking-form label {
     margin: 5px 0;
     font-weight: bold;
     font-size: 18px;
+    margin-top: 25px;
 }
 
-.edit-train-form input {
+.add-booking-form  input[type="text"],
+.add-booking-form  input[type="date"],
+.add-booking-form  input[type="number"] {
     width: 100%;
     padding: 10px;
-    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 3px;
     font-size: 18px;
+    margin: 5px 0;   
 }
 
-/* Button styles */
-.edit-train-submit-button {
+/* button styles */
+.booking-submit-button {
     padding: 10px 20px;
     margin: 10px 0;
     background-color: black;
@@ -55,9 +58,11 @@
     cursor: pointer;
     font-size: 18px;
     font-weight: bold;
+    border: 2px solid black;
+    margin-top: 30px;
 }
 
-.add-class-button {
+.cancel-button {
     padding: 10px 20px;
     margin: 10px 0;
     background-color: goldenrod;
@@ -69,27 +74,11 @@
     font-weight: bold;
 }
 
-.remove-class-button {
-    padding: 10px 20px;
-    margin: 10px 0;
-    background-color: #d34a4a;
-    color: black;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.remove-class-button:hover {
-    background-color: red;
-}
-
-.add-class-button:hover {
+.cancel-button:hover {
     background-color: grey;
 }
 
-.edit-train-submit-button:hover {
+.booking-submit-button:hover {
     background-color: white;
     color: black;
     border: 2px solid black;

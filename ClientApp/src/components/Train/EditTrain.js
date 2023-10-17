@@ -158,7 +158,7 @@ function EditTrain() {
                     <button  className= "add-class-button" type="button" onClick={handleAddClass}>
                         Add Class
                     </button>
-                    <button className= "submit-button" type="submit">SAVE CHANGES</button>
+                    <button className= "edit-train-submit-button" type="submit">SAVE CHANGES</button>
                 </form>
             </div>
         </div>

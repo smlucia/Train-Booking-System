@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../../styles/Booking/AddBookingSummary.css";
+// import "../../styles/Booking/AddBookingSummary.css";
 
 function AddBooking() {
     const [nic, setNic] = useState("");
@@ -12,6 +12,7 @@ function AddBooking() {
     const [trainData, setTrainData] = useState([]);
     const navigate = useNavigate();
 
+    //Funtion to handle fetching train data
     useEffect(() => {
         // Fetch the list of available trains (trainId and trainName) from the server
         async function fetchTrainData() {
@@ -31,6 +32,7 @@ function AddBooking() {
         fetchTrainData();
     }, []);
 
+    //Function to handle Search
     const handleSearch = async () => {
         try {
             if (!nic || !journeyDate || !fromLocation || !toLocation || !noOfPassengers) {
@@ -130,6 +132,7 @@ function AddBooking() {
         navigate("/bookingSummary", { state: { booking: selectedBooking } });
     };
 
+    //Function to handle cancel
     const handleCancel = (id) => {
         navigate("/bookingSummary");
     };

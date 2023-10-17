@@ -17,6 +17,7 @@ function EditSchedule() {
     const [trainData, setTrainData] = useState([]);
     const [error, setError] = useState(null);
 
+    // Function to fetch train and schedule data
     useEffect(() => {
         async function fetchData() {
             try {
