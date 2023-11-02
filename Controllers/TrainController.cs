@@ -4,6 +4,9 @@ using TravelBookingSystem.Services;
 
 namespace TravelBookingSystem.Controllers
 {
+    /// <summary>
+    /// Controller for managing train information, including creation, updating, and deletion of train records.
+    /// </summary>
     [Route("api/trains")]
     [ApiController]
     public class TrainController : ControllerBase

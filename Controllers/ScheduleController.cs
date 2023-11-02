@@ -4,6 +4,9 @@ using TravelBookingSystem.Services;
 
 namespace TravelBookingSystem.Controllers
 {
+    /// <summary>
+    /// Controller for managing train schedules.
+    /// </summary>
     [Route("api/schedules")]
     [ApiController]
     public class ScheduleController : ControllerBase
@@ -73,6 +76,34 @@ namespace TravelBookingSystem.Controllers
 
             await _scheduleService.DeleteScheduleAsync(id);
             return NoContent();
+        }
+
+        // GET: api/schedules/filter
+        // [HttpGet("filter")]
+        // public async Task<ActionResult<IEnumerable<Schedule>>> FilterSchedules(
+        //     [FromQuery] string scheduleDate,
+        //     [FromQuery] string scheduleStatus
+        // )
+        // {
+        //     var filteredSchedules = await _scheduleService.GetFilteredSchedulesAsync(
+        //         scheduleDate,
+        //         scheduleStatus
+        //     );
+        //     return Ok(filteredSchedules);
+        // }
+
+        // GET: api/schedules/{scheduleDate}/{scheduleStatus}
+        [HttpGet("{scheduleDate}/{scheduleStatus}")]
+        public async Task<ActionResult<IEnumerable<Schedule>>> FilterSchedules(
+            string scheduleDate,
+            string scheduleStatus
+        )
+        {
+            var filteredSchedules = await _scheduleService.GetFilteredSchedulesAsync(
+                scheduleDate,
+                scheduleStatus
+            );
+            return Ok(filteredSchedules);
         }
     }
 }

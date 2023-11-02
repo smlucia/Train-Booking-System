@@ -3,6 +3,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace TravelBookingSystem.Models
 {
+    /// <summary>
+    /// Represents a schedule for a train journey.
+    /// </summary>
     public class Schedule
     {
         [BsonId]

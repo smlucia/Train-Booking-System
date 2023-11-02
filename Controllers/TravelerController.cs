@@ -17,8 +17,6 @@ namespace TravelBookingSystem.Controllers
             _travelerServices = travelerServices;
         }
 
-
-
         // GET: api/traveler
         [HttpGet]
         public async Task<List<Traveler>> Get() => await _travelerServices.GetAsync();
@@ -29,10 +27,24 @@ namespace TravelBookingSystem.Controllers
         {
             Traveler traveler = await _travelerServices.GetAsync(id);
 
-            if(traveler == null)
+            if (traveler == null)
             {
                 return NotFound();
+            }
 
+            return traveler;
+        }
+
+        // GET: api/traveler/check
+        [HttpGet("check")]
+        public async Task<ActionResult<Traveler>> CheckTraveler([FromQuery] string nic)
+        {
+            // Query the database to check if a traveler with the given NIC exists
+            Traveler traveler = await _travelerServices.CheckTravelerByNIC(nic);
+
+            if (traveler == null)
+            {
+                return NotFound("Traveler not found");
             }
 
             return traveler;
@@ -43,23 +55,22 @@ namespace TravelBookingSystem.Controllers
         public async Task<ActionResult<Traveler>> Post(Traveler newTraveler)
         {
             await _travelerServices.CreateAsync(newTraveler);
-            return CreatedAtAction(nameof(Get), new {id = newTraveler.Id} , newTraveler);
+            return CreatedAtAction(nameof(Get), new { id = newTraveler.Id }, newTraveler);
         }
 
         // PUT api/traveler/651d7c11ccbc9e3c60c45dc2
         [HttpPut("{id:length(24)}")]
-        public async Task<ActionResult> Put(string id, Traveler updateTtaveler )
+        public async Task<ActionResult> Put(string id, Traveler updateTtaveler)
         {
             Traveler traveler = await _travelerServices.GetAsync(id);
             if (traveler == null)
             {
                 return NotFound("There is no student with this id: " + id);
-
             }
 
             updateTtaveler.Id = traveler.Id;
 
-            await _travelerServices.UpdateAsync(id , updateTtaveler);
+            await _travelerServices.UpdateAsync(id, updateTtaveler);
 
             return Ok("Successfully Updated !!");
         }
@@ -68,12 +79,10 @@ namespace TravelBookingSystem.Controllers
         [HttpDelete("{id:length(24)}")]
         public async Task<ActionResult> Delete(string id)
         {
-
             Traveler traveler = await _travelerServices.GetAsync(id);
             if (traveler == null)
             {
                 return NotFound("There is no student with this id: " + id);
-
             }
 
             await _travelerServices.RemoveAsync(id);

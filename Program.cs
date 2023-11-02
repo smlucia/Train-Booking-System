@@ -10,6 +10,7 @@ builder.Services.AddSingleton<TravelerServices>();
 builder.Services.AddSingleton<TrainServices>();
 builder.Services.AddSingleton<ScheduleService>();
 builder.Services.AddSingleton<UserServices>();
+builder.Services.AddSingleton<BookingServices>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

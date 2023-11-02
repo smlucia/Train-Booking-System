@@ -5,6 +5,9 @@ using TravelBookingSystem.Models;
 
 namespace TravelBookingSystem.Services
 {
+    /// <summary>
+    /// Service for managing train information, including database operations for creating, updating, and deleting train records.
+    /// </summary>
     public class TrainServices
     {
         private readonly IMongoCollection<Train> _trainsCollection;
